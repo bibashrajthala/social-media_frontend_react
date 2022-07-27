@@ -1,0 +1,59 @@
+// import font
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400&family=Bigelow+Rules&family=Inter:wght@400;600;700&display=swap");
+
+// colors used
+$black: #242d49;
+$gray: rgba(36, 45, 73, 0.65);
+$yellow: #f5c32c;
+$orange: #fca61f;
+$hrColor: #cfcdcd;
+$primaryBackgroundcolor: #f3f3f3;
+$cardColor: rgba(255, 255, 255, 0.64);
+$buttonColor: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+$inputColor: rgba(40, 52, 62, 0.07);
+$photo: #4cb256;
+$video: #4a4eb7;
+$location: #ef5757;
+$shedule: #e1ae4a;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.App {
+  padding: 1.6rem;
+  background-color: $primaryBackgroundcolor;
+  font-size: 1.6rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  background: $orange;
+  transition: all 100ms ease-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: $orange;
+  background: transparent;
+  border: 2px solid $orange;
+}
+
+// ::-webkit-scrollbar{
+//   display: none;
+// }

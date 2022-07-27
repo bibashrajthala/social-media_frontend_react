@@ -1,0 +1,9 @@
+.home {
+  display: grid;
+  grid-template-columns: 27rem auto 35rem;
+  gap: 2rem;
+}
+
+.home > * {
+  border: 1px solid red;
+}

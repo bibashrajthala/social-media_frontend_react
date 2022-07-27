@@ -1,0 +1,21 @@
+.blurs {
+  & .blur {
+    border: 1px solid blue;
+    position: absolute;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: #a6ddf0;
+    filter: blur(72px);
+
+    &:nth-of-type(1) {
+      top: -18%;
+      right: 0;
+    }
+
+    &:nth-of-type(2) {
+      top: 36%;
+      left: -8rem;
+    }
+  }
+}
