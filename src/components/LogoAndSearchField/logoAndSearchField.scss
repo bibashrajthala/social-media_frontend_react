@@ -16,6 +16,10 @@ $inputColor: rgba(40, 52, 62, 0.1);
     border: none;
     outline: none;
     padding: 5px;
+
+    &::placeholder {
+      font-size: 1.3rem;
+    }
   }
 
   .search-icon {
