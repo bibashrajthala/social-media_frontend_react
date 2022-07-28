@@ -1,0 +1,107 @@
+$cardColor: rgba(255, 255, 255, 0.64);
+$inputColor: rgba(40, 52, 62, 0.07);
+$photo: #4cb256;
+$video: #4a4eb7;
+$location: #ef5757;
+$schedule: #e1ae4a;
+
+.post-share {
+  display: flex;
+  gap: 1rem;
+  background-color: $cardColor;
+  padding: 1rem;
+  border-radius: 1rem;
+
+  &__profile-image-container {
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__options-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1rem;
+
+    & input {
+      background-color: $inputColor;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 17px;
+      border: none;
+      outline: none;
+
+      &::placeholder {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-around;
+
+    & .option {
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+
+      svg {
+        font-size: 2rem;
+      }
+
+      &:nth-of-type(1) {
+        color: $photo;
+      }
+      &:nth-of-type(2) {
+        color: $video;
+      }
+      &:nth-of-type(3) {
+        color: $location;
+      }
+      &:nth-of-type(4) {
+        color: $schedule;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__button {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 12px;
+  }
+}
+
+.preview-image {
+  position: relative;
+
+  svg {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    max-height: 20rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}

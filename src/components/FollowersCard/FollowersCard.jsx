@@ -12,8 +12,8 @@ const FollowersCard = () => {
       <h3 className="followers-card__heading">Who is following you</h3>
 
       <div className="follower-card-container">
-        {Followers.map((follower) => (
-          <FollowerCard follower={follower} />
+        {Followers.map((follower, index) => (
+          <FollowerCard follower={follower} key={index} />
         ))}
       </div>
     </div>
