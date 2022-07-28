@@ -19,7 +19,7 @@ const Post = ({ post }) => {
         <img src={CommentImg} alt="" />
         <img src={ShareImg} alt="" />
       </div>
-      <span className="post-likes">{likes} likes</span>
+      <span className="post__likes">{likes} likes</span>
 
       <div className="post__details">
         <span>

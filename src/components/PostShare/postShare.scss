@@ -5,12 +5,15 @@ $video: #4a4eb7;
 $location: #ef5757;
 $schedule: #e1ae4a;
 
+$cardShadow: 0 15px 20px rgba(black, 0.02);
+
 .post-share {
   display: flex;
   gap: 1rem;
   background-color: $cardColor;
   padding: 1rem;
   border-radius: 1rem;
+  box-shadow: $cardShadow;
 
   &__profile-image-container {
     border-radius: 50%;

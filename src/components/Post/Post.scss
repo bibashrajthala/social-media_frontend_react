@@ -1,4 +1,6 @@
 $cardColor: rgba(255, 255, 255, 0.64);
+$gray: rgba(36, 45, 73, 0.65);
+$cardShadow: 0 15px 20px rgba(black, 0.02);
 
 .post {
   display: flex;
@@ -7,6 +9,7 @@ $cardColor: rgba(255, 255, 255, 0.64);
   background-color: $cardColor;
   border-radius: 1rem;
   gap: 1rem;
+  box-shadow: $cardShadow;
 
   &__image-container {
     width: 100%;
@@ -24,5 +27,10 @@ $cardColor: rgba(255, 255, 255, 0.64);
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
+  }
+
+  &__likes {
+    font-size: 1.1rem;
+    color: $gray;
   }
 }
