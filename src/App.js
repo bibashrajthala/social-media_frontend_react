@@ -3,6 +3,7 @@ import React from "react";
 import BlurBackground from "./components/BlurBackground/BlurBackground";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
+import Auth from "./pages/Auth/Auth";
 
 import "./App.scss";
 const App = () => {
@@ -10,7 +11,8 @@ const App = () => {
     <div className="App">
       <BlurBackground />
       {/* <Home /> */}
-      <Profile />
+      {/* <Profile /> */}
+      <Auth />
     </div>
   );
 };

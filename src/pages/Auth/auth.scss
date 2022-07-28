@@ -1,0 +1,50 @@
+$buttonColor: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 4rem;
+  position: relative;
+
+  .project-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+
+    .project-logo {
+      width: 6rem;
+      height: 6rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .project-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+
+      .project-name {
+        font-size: 3rem;
+        background-image: $buttonColor;
+        background-size: 100%;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+      }
+
+      .project-motto {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

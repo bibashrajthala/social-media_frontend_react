@@ -4,7 +4,7 @@ import { MdEdit } from "react-icons/md";
 
 import "./infoCard.scss";
 
-const Info = () => {
+const InfoCard = () => {
   return (
     <div className="info-card">
       <div className="info-card__heading">
@@ -38,4 +38,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default InfoCard;
