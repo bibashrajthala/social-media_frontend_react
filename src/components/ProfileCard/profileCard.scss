@@ -5,6 +5,7 @@ $hrColor: #cfcdcd;
 $cardShadow: 0 15px 20px rgba(black, 0.02);
 
 .profile-card {
+  width: 100%;
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -21,7 +22,7 @@ $cardShadow: 0 15px 20px rgba(black, 0.02);
     border: 1px solid $hrColor;
   }
 
-  & span.profile {
+  & span.my-profile {
     font-weight: bold;
     color: $orange;
     align-self: center;
@@ -100,11 +101,4 @@ $cardShadow: 0 15px 20px rgba(black, 0.02);
     height: 130%;
     border-left: 2px solid $hrColor;
   }
-}
-.followStatus {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
 }

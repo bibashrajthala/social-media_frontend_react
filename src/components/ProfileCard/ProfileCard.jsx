@@ -6,6 +6,7 @@ import ProfilePhoto from "../../assets/profileImg.jpg";
 import "./profileCard.scss";
 
 const ProfileCard = () => {
+  const profile = true;
   return (
     <div className="profile-card">
       <div className="photo-container">
@@ -34,9 +35,20 @@ const ProfileCard = () => {
           <span className="profile-follow-number">6,886</span>
           <span className="profile-follow-text">Followers</span>
         </div>
+
+        {profile && (
+          <>
+            <div className="vl"></div>
+
+            <div className="profile-follow">
+              <span className="profile-follow-number">6</span>
+              <span className="profile-follow-text">Posts</span>
+            </div>
+          </>
+        )}
       </div>
       <hr />
-      <span className="profile">My Profile</span>
+      {!profile && <span className="my-profile">My Profile</span>}
     </div>
   );
 };

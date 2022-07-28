@@ -9,9 +9,9 @@ const Trends = () => {
       <div className="trends__card">
         <h3 className="trends__card-heading">Trends for you</h3>
 
-        {TrendsData.map((trend) => (
-          <div className="trends__card-trend">
-            <span className="trend-name">{trend.name}</span>
+        {TrendsData.map((trend, index) => (
+          <div className="trends__card-trend" key={index}>
+            <span className="trend-name">#{trend.name}</span>
             <span className="trend-shares">{trend.shares}K shares</span>
           </div>
         ))}
