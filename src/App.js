@@ -11,8 +11,8 @@ const App = () => {
     <div className="App">
       <BlurBackground />
       {/* <Home /> */}
-      {/* <Profile /> */}
-      <Auth />
+      <Profile />
+      {/* <Auth /> */}
     </div>
   );
 };

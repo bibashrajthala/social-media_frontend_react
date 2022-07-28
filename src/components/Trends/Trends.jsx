@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { TrendsData } from "../../Data/TrendsData";
 
+import ShareModal from "../ShareModal/ShareModal";
+
 import "./Trends.scss";
 const Trends = () => {
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const openShareModalHandler = () => setIsShareModalOpen(true);
   return (
     <div className="trends">
       <div className="trends__card">
@@ -17,7 +21,13 @@ const Trends = () => {
         ))}
       </div>
 
-      <button className="button trends__button">Share</button>
+      <button className="button trends__button" onClick={openShareModalHandler}>
+        Share
+      </button>
+      <ShareModal
+        isShareModalOpen={isShareModalOpen}
+        setIsShareModalOpen={setIsShareModalOpen}
+      />
     </div>
   );
 };

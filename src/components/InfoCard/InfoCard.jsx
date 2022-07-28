@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { MdEdit } from "react-icons/md";
+
+import ProfileModal from "../ProfileModal/ProfileModal";
 
 import "./infoCard.scss";
 
 const InfoCard = () => {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const openProfileModalHandler = () => setIsProfileModalOpen(true);
   return (
     <div className="info-card">
       <div className="info-card__heading">
         <h3>Your info</h3>
-        <MdEdit />
+        <div>
+          <MdEdit onClick={openProfileModalHandler} />
+          <ProfileModal
+            isProfileModalOpen={isProfileModalOpen}
+            setIsProfileModalOpen={setIsProfileModalOpen}
+          />
+          {/* this modal only renders when isProfileModalOpen is true */}
+        </div>
       </div>
 
       <div className="info-card__infos">
