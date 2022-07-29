@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { logIn } from "../../actions/AuthActions";
 
@@ -13,7 +14,8 @@ const defaultLogInFormData = {
 const Login = ({ setIsSignUp }) => {
   const [formData, setFormData] = useState(defaultLogInFormData);
   const dispatch = useDispatch();
-  const loading = useSelector((states) => states.authReducer.loading); // retrieving data, retrieving loading key from state stored in store of authreducer reducer
+  const loading = useSelector((state) => state.authReducer.loading); // retrieving data, retrieving loading key from state stored in store of authreducer reducer
+  const navigate = useNavigate();
 
   const { username, password } = formData;
 
@@ -35,6 +37,7 @@ const Login = ({ setIsSignUp }) => {
     dispatch(logIn(formData));
 
     resetFormFields();
+    navigate("/home");
   };
   return (
     <form className="log-in" onSubmit={onSubmitHandler}>
