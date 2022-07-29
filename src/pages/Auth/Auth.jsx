@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Logo from "../../assets/logo.png";
 
@@ -8,6 +8,7 @@ import Login from "../../components/Login/Login";
 import "./auth.scss";
 
 const Auth = () => {
+  const [isSignUp, setIsSignUp] = useState(false);
   return (
     <div className="auth">
       <div className="project-details">
@@ -22,8 +23,11 @@ const Auth = () => {
         </div>
       </div>
 
-      {/* <SignUp /> */}
-      <Login />
+      {isSignUp ? (
+        <SignUp setIsSignUp={setIsSignUp} />
+      ) : (
+        <Login setIsSignUp={setIsSignUp} />
+      )}
     </div>
   );
 };
