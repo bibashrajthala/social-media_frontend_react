@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import { signUp } from "../../actions/AuthActions";
 
@@ -19,7 +18,6 @@ const SignUp = ({ setIsSignUp }) => {
   const [isPasswordsSame, setIsPasswordsSame] = useState(true);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.authReducer.loading);
-  const navigate = useNavigate();
 
   const { firstName, lastName, username, password, confirmPassword } = formData;
 
@@ -46,7 +44,6 @@ const SignUp = ({ setIsSignUp }) => {
     }
 
     resetFormFields();
-    navigate("/home");
   };
 
   return (
