@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { logIn } from "../../actions/AuthActions";
 
 import "./login.scss";
 
@@ -9,6 +12,8 @@ const defaultLogInFormData = {
 
 const Login = ({ setIsSignUp }) => {
   const [formData, setFormData] = useState(defaultLogInFormData);
+  const dispatch = useDispatch();
+  const loading = useSelector((states) => states.authReducer.loading); // retrieving data, retrieving loading key from state stored in store of authreducer reducer
 
   const { username, password } = formData;
 
@@ -26,6 +31,8 @@ const Login = ({ setIsSignUp }) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formData);
+
+    dispatch(logIn(formData));
 
     resetFormFields();
   };
@@ -55,8 +62,12 @@ const Login = ({ setIsSignUp }) => {
           Don't have an account? <span>SignUp!</span>
         </span>
 
-        <button type="submit" className="button log-in__button">
-          Login
+        <button
+          type="submit"
+          className="button log-in__button"
+          disabled={loading} // disable button(non-clickable) when loading is true
+        >
+          {loading ? "Loading..." : "Login"}
         </button>
       </div>
     </form>

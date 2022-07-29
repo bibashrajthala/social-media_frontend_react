@@ -56,6 +56,11 @@ body {
   border: 2px solid $orange;
 }
 
+.button:disabled {
+  background: silver;
+  pointer-events: none; // btn doesnot receive any pointer events such as clicking,hovering,etc
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

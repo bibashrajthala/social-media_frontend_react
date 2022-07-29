@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { signUp } from "../../actions/AuthActions";
 
 import "./SignUp.scss";
 
@@ -13,6 +16,8 @@ const defaultSignUpFormData = {
 const SignUp = ({ setIsSignUp }) => {
   const [formData, setFormData] = useState(defaultSignUpFormData);
   const [isPasswordsSame, setIsPasswordsSame] = useState(true);
+  const dispatch = useDispatch();
+  const loading = useSelector((states) => states.authReducer.loading);
 
   const { firstName, lastName, username, password, confirmPassword } = formData;
 
@@ -31,8 +36,12 @@ const SignUp = ({ setIsSignUp }) => {
     e.preventDefault();
     console.log(formData);
 
-    if (password !== confirmPassword) setIsPasswordsSame(false);
-    else setIsPasswordsSame(true);
+    if (password !== confirmPassword) {
+      setIsPasswordsSame(false);
+    } else {
+      setIsPasswordsSame(true);
+      dispatch(signUp(formData)); // only dispatch data entered to action's signUp only when two passwords entered are same
+    }
 
     resetFormFields();
   };
@@ -100,8 +109,12 @@ const SignUp = ({ setIsSignUp }) => {
         Already have an account? <span>Login!</span>
       </span>
 
-      <button type="submit" className="button sign-up__button">
-        Sign Up
+      <button
+        type="submit"
+        className="button sign-up__button"
+        disabled={loading} // disable button(non-clickable) when loading is true
+      >
+        {loading ? "Loading..." : "Sign Up"}
       </button>
     </form>
   );
