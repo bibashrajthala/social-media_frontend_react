@@ -10,30 +10,18 @@ import Auth from "./pages/Auth/Auth";
 import "./App.scss";
 const App = () => {
   const user = useSelector((state) => state.authReducer.authData);
-  console.log(user); // if user is NOT logged in or  signed up ie  we dont authData in authReducer's state of store ,we need to go to auth page .
+  // console.log(user);
   return (
     <div className="App">
       <BlurBackground />
       <Routes>
         <Route
           path="/"
-          element={
-            user ? (
-              <Navigate to="home" />
-            ) : (
-              <Navigate to="auth" />
-            ) /* instead of rendering component directly Navigate Component can be used to change and go to diff. path from the current path for which certain component can be rendered( here from '/' go to "home"=>'/home' or 'auth'=>'/auth') */
-          }
+          element={user ? <Navigate to="home" /> : <Navigate to="auth" />}
         />
         <Route
           path="/auth"
-          element={
-            user ? (
-              <Navigate to="../home" />
-            ) : (
-              <Auth />
-            ) /* from '/auth' go one path up ie '/' then to 'home'=>'/home'  or directly render <Auth/> if user is not NUll*/
-          }
+          element={user ? <Navigate to="../home" /> : <Auth />}
         />
         <Route
           path="/home"
