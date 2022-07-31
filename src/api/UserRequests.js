@@ -2,6 +2,17 @@ import axios from "axios";
 
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
+// for providing token to server's  middleware for verification from the localStorage as the header's authorization
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("profile")).token
+    }`;
+  }
+
+  return req;
+});
+
 export const getAllUsers = () => API.get("/user");
 
 export const getUser = (userId) => API.get(`/user/${userId}`);
