@@ -8,7 +8,7 @@ import "./ProfileAndPostSide.scss";
 const ProfileAndPostSide = () => {
   return (
     <div className="profile-posts-container">
-      <ProfileCard />
+      <ProfileCard page="profile" />
       <PostSide />
     </div>
   );

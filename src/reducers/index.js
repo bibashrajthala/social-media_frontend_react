@@ -1,6 +1,9 @@
 import { combineReducers } from "redux";
 
 import authReducer from "./AuthReducers";
-import uploadPostReducer from "./UploadReducers";
+import uploadAndPostsReducer from "./UploadAndPostsReducers";
 
-export const reducers = combineReducers({ authReducer, uploadPostReducer });
+export const reducers = combineReducers({
+  authReducer,
+  uploadAndPostsReducer,
+});

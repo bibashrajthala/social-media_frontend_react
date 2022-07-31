@@ -22,7 +22,9 @@ const PostShare = () => {
 
   const { user } = useSelector((state) => state.authReducer.authData); // get the current user form store, ie the user currenlty logged in ,to use it in out newPost object
 
-  const uploading = useSelector((state) => state.uploadPostReducer.uploading);
+  const uploading = useSelector(
+    (state) => state.uploadAndPostsReducer.uploading
+  );
 
   const uploadPhotoHandler = () => imageRef.current.click();
 

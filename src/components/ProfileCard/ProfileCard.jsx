@@ -1,19 +1,38 @@
 import React from "react";
-
-import CoverPhoto from "../../assets/cover.jpg";
-import ProfilePhoto from "../../assets/profileImg.jpg";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "./profileCard.scss";
 
-const ProfileCard = () => {
-  const profile = true;
+const ProfileCard = ({ page }) => {
+  const { id } = useParams();
+  const { user } = useSelector((state) => state.authReducer.authData);
+  const posts = useSelector((state) => state.uploadAndPostsReducer.posts);
+
+  // first alphabet capitalize
+  const firstName = user.firstName[0].toUpperCase() + user.firstName.slice(1);
+  const lastName = user.lastName[0].toUpperCase() + user.lastName.slice(1);
+
+  const serverPublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="profile-card">
       <div className="photo-container">
-        <img src={CoverPhoto} alt="Cover_Photo" className="cover-photo" />
+        <img
+          src={
+            user.coverPicture
+              ? serverPublicFolder + user.coverPicture
+              : serverPublicFolder + "defaultCover.jpg"
+          }
+          alt="Cover_Photo"
+          className="cover-photo"
+        />
         <div className="profile-photo-container">
           <img
-            src={ProfilePhoto}
+            src={
+              user.profilePicture
+                ? serverPublicFolder + user.profilePicture
+                : serverPublicFolder + "defaultProfile.png"
+            }
             alt="Profile_Photo"
             className="profile-photo"
           />
@@ -21,34 +40,54 @@ const ProfileCard = () => {
       </div>
 
       <div className="profile-name-container">
-        <h2 className="profile-name">Michael Jordan</h2>
-        <p className="profile-position">Senior Frontend Developer</p>
+        <h2 className="profile-name">
+          {firstName} {lastName}
+        </h2>
+        <p className="profile-position">
+          {
+            // nested if else
+            user.worksAt
+              ? user.worksAt
+              : user._id === id
+              ? "Write about yourself"
+              : "Nothing to show"
+          }
+        </p>
       </div>
       <hr />
       <div className="profile-follow-container">
         <div className="profile-follow">
-          <span className="profile-follow-number">6,886</span>
-          <span className="profile-follow-text">Followers</span>
+          <span className="profile-follow-number">{user.following.length}</span>
+          <span className="profile-follow-text">Following</span>
         </div>
         <div className="vl"></div>
         <div className="profile-follow">
-          <span className="profile-follow-number">6,886</span>
+          <span className="profile-follow-number">{user.followers.length}</span>
           <span className="profile-follow-text">Followers</span>
         </div>
 
-        {profile && (
+        {page === "profile" && (
           <>
             <div className="vl"></div>
 
             <div className="profile-follow">
-              <span className="profile-follow-number">6</span>
+              <span className="profile-follow-number">
+                {posts.filter((post) => post.userId === user._id).length}
+              </span>
               <span className="profile-follow-text">Posts</span>
             </div>
           </>
         )}
       </div>
       <hr />
-      {!profile && <span className="my-profile">My Profile</span>}
+      {page !== "profile" && (
+        <Link
+          to={`/profile/${user._id}`}
+          style={{ textDecoration: "none", marginBottom: "1rem" }}
+        >
+          <span className="my-profile">My Profile</span>
+        </Link>
+      )}
     </div>
   );
 };
