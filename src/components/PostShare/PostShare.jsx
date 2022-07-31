@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { uploadImage, uploadPost } from "../../actions/UploadActions";
 
-import ProfileImg from "../../assets/profileImg.jpg";
 import {
   MdInsertPhoto,
   MdVideocam,
@@ -74,7 +73,10 @@ const PostShare = () => {
   return (
     <div className="post-share">
       <div className="post-share__profile-image-container">
-        <img src={ProfileImg} alt="Profile_image" />
+        <img
+          src={process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture}
+          alt="Profile_image"
+        />
       </div>
       <div className="post-share__options-container">
         <input

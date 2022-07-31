@@ -1,5 +1,9 @@
 const authReducer = (
-  state = { authData: null, loading: false, error: false },
+  state = {
+    authData: null,
+    loading: false,
+    error: false,
+  },
   action
 ) => {
   switch (action.type) {
@@ -7,7 +11,7 @@ const authReducer = (
     case "AUTH_START":
       return { ...state, loading: true, error: false };
     case "AUTH_SUCCESS":
-      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data })); // put user data in profile of localstorage as well
       return { ...state, authData: action.data, loading: false, error: false };
     case "AUTH_FAILED":
       return { ...state, loading: false, error: true };
@@ -18,6 +22,23 @@ const authReducer = (
       return { ...state, authData: null, loading: false, error: false }; // clear authData ie users Data from store
     case "LOG_OUT_FAIL":
       localStorage.clear(); // clear user's data(profile) from localStorage when he logs out
+      return { ...state, loading: false, error: true };
+
+    // for profileModal component to implement updating user's imfo
+    case "UPDATE_USER_START":
+      return { ...state, loading: true, error: false };
+    case "UPDATE_USER_SUCCESS":
+      localStorage.setItem(
+        "profile",
+        JSON.stringify({ ...action?.updatedUserData })
+      ); // put updated data in localStorage id update local storage also
+      return {
+        ...state,
+        authData: action?.updatedUserData,
+        loading: false,
+        error: false,
+      };
+    case "UPDATE_USER_FAIL":
       return { ...state, loading: false, error: true };
 
     default:

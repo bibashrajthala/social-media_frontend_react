@@ -16,7 +16,12 @@ const InfoCard = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const profileUserId = params.id;
-  const { user } = useSelector((state) => state.authReducer.authData);
+
+  const { user } = useSelector((state) => {
+    // console.log(state.authReducer.authData);
+    return state.authReducer.authData;
+  });
+  // console.log(user);
 
   useEffect(() => {
     const fetchProfileUser = async () => {
@@ -51,6 +56,7 @@ const InfoCard = () => {
             <ProfileModal
               isProfileModalOpen={isProfileModalOpen}
               setIsProfileModalOpen={setIsProfileModalOpen}
+              data={user}
             />
             {/* this modal only renders when isProfileModalOpen is true */}
           </div>
