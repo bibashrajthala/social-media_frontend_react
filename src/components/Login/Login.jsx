@@ -30,7 +30,7 @@ const Login = ({ setIsSignUp }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     dispatch(logIn(formData));
 

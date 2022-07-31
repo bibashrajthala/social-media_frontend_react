@@ -34,7 +34,7 @@ const SignUp = ({ setIsSignUp }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     if (password !== confirmPassword) {
       setIsPasswordsSame(false);

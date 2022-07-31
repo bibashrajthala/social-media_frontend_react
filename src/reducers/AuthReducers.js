@@ -41,6 +41,34 @@ const authReducer = (
     case "UPDATE_USER_FAIL":
       return { ...state, loading: false, error: true };
 
+    // for follow and unfollow implementation in followerCard
+    case "FOLLOW_USER":
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          user: {
+            ...state.authData.user,
+            following: [...state.authData.user.following, action.data],
+          },
+        },
+      };
+    case "UNFOLLOW_USER":
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          user: {
+            ...state.authData.user,
+            following: [
+              ...state.authData.user.following.filter(
+                (personId) => personId !== action.data // filtering out the id of person on which unfollow btn is clicked
+              ),
+            ],
+          },
+        },
+      };
+
     default:
       return state;
   }

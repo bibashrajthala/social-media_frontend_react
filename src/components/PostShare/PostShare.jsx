@@ -74,7 +74,11 @@ const PostShare = () => {
     <div className="post-share">
       <div className="post-share__profile-image-container">
         <img
-          src={process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture}
+          src={
+            user.profilePicture
+              ? process.env.REACT_APP_PUBLIC_FOLDER + user.profilePicture
+              : process.env.REACT_APP_PUBLIC_FOLDER + "defaultProfile.png"
+          }
           alt="Profile_image"
         />
       </div>
