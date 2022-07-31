@@ -37,6 +37,7 @@ const Post = ({ post }) => {
           src={liked ? LikeImg : NotLikeImg}
           alt=""
           onClick={handleLikeandUnlike}
+          style={{ cursor: "pointer" }}
         />
         <img src={CommentImg} alt="" />
         <img src={ShareImg} alt="" />

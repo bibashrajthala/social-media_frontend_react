@@ -36,7 +36,12 @@ const FollowerCard = ({ person }) => {
         <span className="follower-card-name">{firstName}</span>
         <span className="follower-card-username">{username}</span>
       </div>
-      <button className="button follower-card__button" onClick={followHandler}>
+      <button
+        className={
+          following ? "button unfollow-btn" : "button follower-card__button"
+        }
+        onClick={followHandler}
+      >
         {following ? "Unfollow" : "Follow"}
       </button>
     </div>

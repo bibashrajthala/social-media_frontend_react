@@ -33,4 +33,15 @@
     // justify-self: flex-end;
     margin-left: auto;
   }
+
+  .unfollow-btn {
+    height: 2rem;
+    padding: 1.3rem 1.7rem;
+    // justify-self: flex-end;
+    margin-left: auto;
+    color: orange;
+    border: 2px solid orange;
+    cursor: pointer;
+    background: transparent;
+  }
 }
