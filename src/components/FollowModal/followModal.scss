@@ -1,0 +1,22 @@
+.follow-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__heading {
+    color: orange;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .list-item {
+      font-size: 1.3rem;
+      p {
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -2,7 +2,10 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import FollowModal from "../FollowModal/FollowModal";
+
 import "./profileCard.scss";
+import { useState } from "react";
 
 const ProfileCard = ({ page }) => {
   const { id } = useParams();
@@ -14,6 +17,12 @@ const ProfileCard = ({ page }) => {
   const lastName = user.lastName[0].toUpperCase() + user.lastName.slice(1);
 
   const serverPublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const [isFollowModalOpen, setIsFollowModalOpen] = useState(false);
+  const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
+
+  const handleFollowingModal = () => setIsFollowingModalOpen(true);
+  const handleFollowModal = () => setIsFollowModalOpen(true);
   return (
     <div className="profile-card">
       <div className="photo-container">
@@ -56,15 +65,23 @@ const ProfileCard = ({ page }) => {
       </div>
       <hr />
       <div className="profile-follow-container">
-        <div className="profile-follow">
+        <div className="profile-follow" onClick={handleFollowingModal}>
           <span className="profile-follow-number">{user.following.length}</span>
           <span className="profile-follow-text">Following</span>
         </div>
         <div className="vl"></div>
-        <div className="profile-follow">
+        <div className="profile-follow" onClick={handleFollowModal}>
           <span className="profile-follow-number">{user.followers.length}</span>
           <span className="profile-follow-text">Followers</span>
         </div>
+
+        <FollowModal
+          isFollowModalOpen={isFollowModalOpen}
+          setIsFollowModalOpen={setIsFollowModalOpen}
+          isFollowingModalOpen={isFollowingModalOpen}
+          setIsFollowingModalOpen={setIsFollowingModalOpen}
+          user={user}
+        />
 
         {page === "profile" && (
           <>
