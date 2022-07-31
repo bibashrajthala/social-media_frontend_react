@@ -50,6 +50,11 @@ $cardShadow: 0 15px 20px rgba(black, 0.02);
     display: flex;
     justify-content: space-around;
 
+    @media screen and (max-width: 500px) {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+
     & .option {
       padding: 5px;
       padding-left: 10px;

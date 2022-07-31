@@ -8,6 +8,11 @@ $buttonColor: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
   gap: 4rem;
   position: relative;
 
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
   .project-details {
     display: flex;
     align-items: center;

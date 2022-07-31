@@ -2,6 +2,22 @@
   display: grid;
   grid-template-columns: 35rem auto 30rem;
   gap: 2rem;
+
+  @media screen and (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & > *:nth-child(3) {
+      order: 1;
+    }
+    & > *:nth-child(1) {
+      order: 2;
+    }
+    & > *:nth-child(2) {
+      order: 3;
+    }
+  }
 }
 
 .profile > * {
