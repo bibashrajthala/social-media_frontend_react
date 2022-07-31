@@ -21,3 +21,14 @@ export const signUp = (formData) => async (dispatch) => {
     dispatch({ type: "AUTH_FAILED" });
   }
 };
+
+export const logout = () => async (dispatch) => {
+  try {
+    dispatch({ type: "LOG_OUT_SUCCESS" });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "LOG_OUT_FAIL" });
+  }
+};
+
+// will use authReducer (for UserActions as well as it contains the data of the users)

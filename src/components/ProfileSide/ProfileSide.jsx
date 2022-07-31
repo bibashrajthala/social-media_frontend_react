@@ -10,7 +10,7 @@ const ProfileSide = () => {
   return (
     <div className="profile-side">
       <LogoAndSearchField />
-      <ProfileCard />
+      <ProfileCard page="home" />
       <FollowersCard />
     </div>
   );

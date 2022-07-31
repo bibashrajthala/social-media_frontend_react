@@ -11,7 +11,7 @@ const Home = () => {
     <div className="home">
       <ProfileSide />
       <PostSide />
-      <TrendsSide />
+      <TrendsSide page="home" />
     </div>
   );
 };

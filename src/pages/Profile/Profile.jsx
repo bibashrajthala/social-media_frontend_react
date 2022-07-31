@@ -11,7 +11,7 @@ const Profile = () => {
     <div className="profile">
       <InfoSide />
       <ProfileAndPostSide />
-      <TrendsSide />
+      <TrendsSide page="profile" />
     </div>
   );
 };

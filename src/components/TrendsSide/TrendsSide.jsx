@@ -5,10 +5,10 @@ import Trends from "../Trends/Trends";
 
 import "./trendsSide.scss";
 
-const TrendsSide = () => {
+const TrendsSide = ({ page }) => {
   return (
     <div className="trends-side">
-      <Navigation />
+      <Navigation page={page} />
       <Trends />
     </div>
   );
