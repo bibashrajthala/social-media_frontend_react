@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { followUser, unfollowUser } from "../../actions/UserActions";
 
 import "./followerCard.scss";
 
 const FollowerCard = ({ person }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authReducer.authData);
   const [following, setFollowing] = useState(
@@ -18,6 +20,10 @@ const FollowerCard = ({ person }) => {
       ? dispatch(unfollowUser(person._id, user))
       : dispatch(followUser(person._id, user));
     setFollowing((prev) => !prev);
+  };
+
+  const followerNaviateHandler = () => {
+    navigate(`/profile/${person._id}`);
   };
   return (
     <div className="follower-card">
@@ -32,7 +38,10 @@ const FollowerCard = ({ person }) => {
           className="follower-card-image"
         />
       </div>
-      <div className="follower-card__names-container">
+      <div
+        className="follower-card__names-container"
+        onClick={followerNaviateHandler}
+      >
         <span className="follower-card-name">{firstName}</span>
         <span className="follower-card-username">{username}</span>
       </div>

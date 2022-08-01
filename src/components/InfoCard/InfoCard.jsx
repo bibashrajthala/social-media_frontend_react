@@ -31,11 +31,12 @@ const InfoCard = () => {
         setProfileUser(user); // current user(user logged in)'s profile
       } else {
         setProfileUser(data); // other user's profile
+        // console.log(data);
       }
     };
     fetchProfileUser();
     // console.log(profileUser)
-  }, [user]);
+  }, [profileUserId]);
 
   const { relationship, livesIn, worksAt } = profileUser;
 

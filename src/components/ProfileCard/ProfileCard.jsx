@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import FollowModal from "../FollowModal/FollowModal";
+import * as UserAPI from "../../api/UserRequests";
 
 import "./profileCard.scss";
-import { useState } from "react";
 
 const ProfileCard = ({ page }) => {
-  const { id } = useParams();
+  const params = useParams();
   const { user } = useSelector((state) => state.authReducer.authData);
+  const [profileUser, setProfileUser] = useState(user);
   const posts = useSelector((state) => state.uploadAndPostsReducer.posts);
 
+  const profileUserId = params.id;
+
+  useEffect(() => {
+    if (profileUserId) {
+      const fetchProfileUser = async () => {
+        const { data } = await UserAPI.getUser(profileUserId);
+        // console.log(data);
+        if (profileUserId === user._id) {
+          setProfileUser(user); // current user(user logged in)'s profile
+        } else {
+          setProfileUser(data); // other user's profile
+          // console.log(data);
+        }
+      };
+      fetchProfileUser();
+      // console.log(profileUser)
+    }
+  }, [profileUserId]);
+
   // first alphabet capitalize
-  const firstName = user.firstName[0].toUpperCase() + user.firstName.slice(1);
-  const lastName = user.lastName[0].toUpperCase() + user.lastName.slice(1);
+  const firstName =
+    profileUser.firstName[0].toUpperCase() + profileUser.firstName.slice(1);
+  const lastName =
+    profileUser.lastName[0].toUpperCase() + profileUser.lastName.slice(1);
 
   const serverPublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -28,8 +50,8 @@ const ProfileCard = ({ page }) => {
       <div className="photo-container">
         <img
           src={
-            user.coverPicture
-              ? serverPublicFolder + user.coverPicture
+            profileUser.coverPicture
+              ? serverPublicFolder + profileUser.coverPicture
               : serverPublicFolder + "defaultCover.jpg"
           }
           alt="Cover_Photo"
@@ -38,8 +60,8 @@ const ProfileCard = ({ page }) => {
         <div className="profile-photo-container">
           <img
             src={
-              user.profilePicture
-                ? serverPublicFolder + user.profilePicture
+              profileUser.profilePicture
+                ? serverPublicFolder + profileUser.profilePicture
                 : serverPublicFolder + "defaultProfile.png"
             }
             alt="Profile_Photo"
@@ -57,7 +79,7 @@ const ProfileCard = ({ page }) => {
             // nested if else
             user.worksAt
               ? user.worksAt
-              : user._id === id
+              : user._id === profileUserId
               ? "Write about yourself"
               : "Nothing to show"
           }
@@ -66,12 +88,16 @@ const ProfileCard = ({ page }) => {
       <hr />
       <div className="profile-follow-container">
         <div className="profile-follow" onClick={handleFollowingModal}>
-          <span className="profile-follow-number">{user.following.length}</span>
+          <span className="profile-follow-number">
+            {profileUser.following.length}
+          </span>
           <span className="profile-follow-text">Following</span>
         </div>
         <div className="vl"></div>
         <div className="profile-follow" onClick={handleFollowModal}>
-          <span className="profile-follow-number">{user.followers.length}</span>
+          <span className="profile-follow-number">
+            {profileUser.followers.length}
+          </span>
           <span className="profile-follow-text">Followers</span>
         </div>
 
@@ -80,7 +106,7 @@ const ProfileCard = ({ page }) => {
           setIsFollowModalOpen={setIsFollowModalOpen}
           isFollowingModalOpen={isFollowingModalOpen}
           setIsFollowingModalOpen={setIsFollowingModalOpen}
-          user={user}
+          user={profileUser}
         />
 
         {page === "profile" && (
@@ -89,7 +115,7 @@ const ProfileCard = ({ page }) => {
 
             <div className="profile-follow">
               <span className="profile-follow-number">
-                {posts.filter((post) => post.userId === user._id).length}
+                {posts.filter((post) => post.userId === profileUser._id).length}
               </span>
               <span className="profile-follow-text">Posts</span>
             </div>
