@@ -36,7 +36,7 @@ const InfoCard = () => {
     };
     fetchProfileUser();
     // console.log(profileUser)
-  }, [profileUserId]);
+  }, [profileUserId, user]);
 
   const { relationship, livesIn, worksAt } = profileUser;
 

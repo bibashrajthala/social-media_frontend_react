@@ -88,12 +88,16 @@ const ProfileCard = ({ page }) => {
       <hr />
       <div className="profile-follow-container">
         <div className="profile-follow" onClick={handleFollowingModal}>
-          <span className="profile-follow-number">{user.following.length}</span>
+          <span className="profile-follow-number">
+            {profileUser.following.length}
+          </span>
           <span className="profile-follow-text">Following</span>
         </div>
         <div className="vl"></div>
         <div className="profile-follow" onClick={handleFollowModal}>
-          <span className="profile-follow-number">{user.followers.length}</span>
+          <span className="profile-follow-number">
+            {profileUser.followers.length}
+          </span>
           <span className="profile-follow-text">Followers</span>
         </div>
 

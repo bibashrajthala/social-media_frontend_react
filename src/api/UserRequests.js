@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+// const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({
+  baseURL: "https://tweetbook-social-media.herokuapp.com/",
+});
 
 // for providing token to server's  middleware for verification from the localStorage as the header's authorization
 API.interceptors.request.use((req) => {
