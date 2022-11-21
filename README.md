@@ -12,3 +12,7 @@ This is a social media app titled "Tweetbook".
  
  #here is the link to its backend server code:
  https://github.com/bibashrajthala/social-media_backend_node
+ 
+ for login:
+ user: sujit@com
+ password: 12345678
